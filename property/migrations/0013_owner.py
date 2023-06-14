@@ -17,9 +17,9 @@ class Migration(migrations.Migration):
             fields=[
                 ('id', models.AutoField(auto_created=True, primary_key=True, serialize=False, verbose_name='ID')),
                 ('full_name', models.CharField(max_length=200, verbose_name='ФИО владельца')),
-                ('phonenumber', models.CharField(max_length=20, verbose_name='Номер владельца')),
+                ('phone_number', models.CharField(max_length=20, verbose_name='Номер владельца')),
                 ('pure_phone', phonenumber_field.modelfields.PhoneNumberField(blank=True, max_length=128, null=True, region=None, verbose_name='Нормализованный номер владельца')),
-                ('flat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='owners', to='property.Flat', verbose_name='Квартиры в собственности')),
+                ('flat', models.ForeignKey(on_delete=django.db.models.deletion.CASCADE, related_name='owners', to='property.Flat', verbose_name='Квартиры в собственности', null=True)),
             ],
         ),
     ]

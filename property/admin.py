@@ -33,11 +33,12 @@ class ComplaintAdmin(admin.ModelAdmin):
 
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
-    # list_display = [
-    #     'user',
-    #     'flat',
-    #     'text',
-    #     ]
+    list_display = [
+        'full_name',
+        'phone_number',
+        'pure_phone',
+        'flat'
+        ]
     raw_id_fields = ['flat',]
 
 # admin.site.register(Complaint)

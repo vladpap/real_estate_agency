@@ -86,7 +86,7 @@ class Complaint(models.Model):
 
 class Owner(models.Model):
     full_name = models.CharField('ФИО владельца', max_length=200)
-    phonenumber = models.CharField('Номер владельца', max_length=20)
+    phone_number = models.CharField('Номер владельца', max_length=20)
     pure_phone = PhoneNumberField(
         'Нормализованный номер владельца',
         null=True,
@@ -95,4 +95,8 @@ class Owner(models.Model):
         Flat,
         on_delete=models.CASCADE,
         related_name='owners',
-        verbose_name='Квартиры в собственности')
+        verbose_name='Квартиры в собственности',
+        null=True,)
+
+    def __str__(self):
+        return f'{self.full_name}, {self.phone_number}, {self.pure_phone}'
