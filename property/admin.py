@@ -37,7 +37,6 @@ class OwnerAdmin(admin.ModelAdmin):
         'full_name',
         'phone_number',
         'pure_phone',
-        'flat'
         ]
     raw_id_fields = ['flat',]
 

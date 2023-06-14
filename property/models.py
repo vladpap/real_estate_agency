@@ -91,12 +91,10 @@ class Owner(models.Model):
         'Нормализованный номер владельца',
         null=True,
         blank=True)
-    flat =  models.ForeignKey(
+    flat =  models.ManyToManyField(
         Flat,
-        on_delete=models.CASCADE,
         related_name='owners',
-        verbose_name='Квартиры в собственности',
-        null=True,)
+        verbose_name='Квартиры в собственности',)
 
     def __str__(self):
         return f'{self.full_name}, {self.phone_number}, {self.pure_phone}'
