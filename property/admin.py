@@ -1,8 +1,11 @@
 from django.contrib import admin
 
-from .models import Flat
-from .models import Complaint
-from .models import Owner
+from .models import Flat, Complaint, Owner
+
+
+class OwnerInline(admin.TabularInline):
+    model = Flat.owners.through
+    raw_id_fields = ('owner',)
 
 
 @admin.register(Flat)
@@ -20,6 +23,10 @@ class FlatAdmin(admin.ModelAdmin):
     list_filter = ['new_building']
     raw_id_fields = ['liked_by',]
 
+    inlines = [OwnerInline]
+    # exclude = ['flat']
+
+
 @admin.register(Complaint)
 class ComplaintAdmin(admin.ModelAdmin):
     list_display = [
@@ -29,6 +36,7 @@ class ComplaintAdmin(admin.ModelAdmin):
         ]
     raw_id_fields = ['user', 'flat',]
 
+
 @admin.register(Owner)
 class OwnerAdmin(admin.ModelAdmin):
     list_display = [
@@ -37,5 +45,3 @@ class OwnerAdmin(admin.ModelAdmin):
         'pure_phone',
         ]
     raw_id_fields = ['flat',]
-
-# admin.site.register(Complaint)
