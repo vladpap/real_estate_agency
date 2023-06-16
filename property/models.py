@@ -66,6 +66,7 @@ class Complaint(models.Model):
     user = models.ForeignKey(
         User,
         on_delete=models.SET(get_sentinel_user),
+        related_name='complaints',
         verbose_name='Кто пожаловался')
     flat = models.ForeignKey(
         Flat,
