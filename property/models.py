@@ -65,7 +65,7 @@ def get_sentinel_user():
 class Complaint(models.Model):
     user = models.ForeignKey(
         User,
-        on_delete=models.SET(get_sentinel_user),
+        on_delete=models.CASCADE,
         related_name='complaints',
         verbose_name='Кто пожаловался')
     flat = models.ForeignKey(
