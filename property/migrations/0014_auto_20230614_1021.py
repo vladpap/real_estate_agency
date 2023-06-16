@@ -7,7 +7,7 @@ def set_owners(apps, schema_editor):
     Owner = apps.get_model('property', 'Owner')
     Flat = apps.get_model('property', 'Flat')
 
-    for flat in Flat.objects.all():
+    for flat in Flat.objects.all().iterator():
         Owner.objects.get_or_create(
             full_name=flat.owner,
             phone_number=flat.owners_phonenumber,
